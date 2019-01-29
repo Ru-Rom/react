@@ -9,13 +9,12 @@ import React from 'react';
 
 export default class Menu extends React.Component{
     render() {
-        console.log(this.props.menuTitle);
-        //const items = this.props.items.map((item) => { // Создаем при помощи map новый массив items
-            //return <li><a href={item.href}>{item.title}</a></li>
-        //});
+        const items = this.props.items.map((item, index) => { // Создаем при помощи map новый массив items
+            return <li key={index} className="list-group-item list-group-item-action"><a href={item.href}>{item.title}</a></li>;
+        });
         return(
             <div><h4>{this.props.menuTitle}</h4>
-                {/* <ul>{items}</ul> */}
+                <ul className="list-group">{items}</ul>
             </div>
         );
     }

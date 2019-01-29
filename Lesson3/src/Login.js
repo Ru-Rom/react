@@ -77,7 +77,7 @@ export default class Login extends React.Component {
                 </div>
                 <button type="submit" className="btn btn-primary">Отправить</button>
                 {/* ниже просто костыль с попыткой вывести данные */}
-                <div>Погода: {result.temp}</div>
+                <div><br></br>Погода: {result.temp}</div>
             </form>
         );
     }

@@ -15,7 +15,7 @@ export default class Weather {
 
                 temp = json.main.temp; // celsius
                 humidity = json.main.humidity; // %
-                pressure = Number((json.main.pressure / 1.33322387415).toFixed(2)); // hPa
+                pressure = Number((json.main.pressure / 1.33322387415).toFixed(2)); // hPa > mm
                 if (json.weather[0]) {
                     description = json.weather[0].description;
                 } else {
