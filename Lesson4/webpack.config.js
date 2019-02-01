@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/app.jsx',
+    entry: path.resolve(__dirname, 'src', 'app.jsx'),//'./src/app.jsx',
     output: {
-        path: path.resolve('dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'
-    },
+    }, 
     mode: 'development',
     watch: true,
     module: {
@@ -21,5 +21,8 @@ module.exports = {
                 use: ['style-loader', 'css-loader'], // Работает справа на лево
             }
         ]
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist')
     }
 };
