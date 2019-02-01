@@ -37,6 +37,10 @@ export default class DisplayModal extends React.Component {
         this.setState({DisplayModal});
     }
 
+    // static getDerivedStateFromProps(props, state) {
+    //     console.log('getDerivedStateFromProps');
+    // }
+
     render() {
         let modalView;
         if (this.state.display) {
@@ -92,6 +96,11 @@ export default class DisplayModal extends React.Component {
                 {modalView}
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.setState({display: false}); // по идейному воплощению окошко должно быть скрыто ^^
+        console.log('componentDidMount');
     }
 
 }

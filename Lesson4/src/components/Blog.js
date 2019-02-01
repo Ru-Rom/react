@@ -31,7 +31,7 @@ export default class Blog extends React.Component {
             );
         });
         return (
-            <>{items}</> //{items} // <Post postTitle={'item.title'} posts={items} />
+            <>{items}</>
             
         );
     }

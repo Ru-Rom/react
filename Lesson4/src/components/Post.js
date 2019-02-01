@@ -8,13 +8,7 @@
 import React from 'react';
 
 export default class Post extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: this.props.posts // Копируем свойство posts из props
-        };
-    }
-
+   
     render() {
         return ( // key={index}
             <ul>
