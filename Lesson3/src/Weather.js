@@ -7,7 +7,7 @@ export default class Weather {
     }
 
     getCurrentWeather() { // Не выходит получить данные отсюда в модуле Login, получаю undefined(т.к. функция не успевает вернуть результат) либо ошибку с then т.к. похоже в конце не промис же выдаю, но пока я только приближаюсь к пониманию "что почем" здесь
-        fetch(this.fetchURL)
+        return fetch(this.fetchURL)
             .then(function (response) {
                 return response.json();
             }).then(function (json) {
