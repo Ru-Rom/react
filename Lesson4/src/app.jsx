@@ -17,14 +17,6 @@ import Blog from './components/Blog';
 import WelcomeModal from './components/WelcomeModal';
 import './css/app.css';
 
-class App extends React.Component {
-    render() {
-        return (
-            <div> </div> //<Menu menuTitle='Меню' items = {menuItems}/>
-        );
-    }
-}
-
 console.log('Урок 4');
 
 const blogPosts = [
@@ -32,12 +24,6 @@ const blogPosts = [
     {title: 'Заголовок поста 2', txt: 'Содержимое поста 2'},
     {title: 'Заголовок поста 3', txt: 'Содержимое поста 3'}
 ];
-
-//const newLogin = new Login('Вася', 28);
-//const newMenu = new Menu;
-
-// ReactDOM.render(<App />, document.getElementById('menu-place'));
-// ReactDOM.render(<Login />, document.getElementById('login-place'));
 
 ReactDOM.render(<WelcomeModal />, document.getElementById('modal-place'));
 ReactDOM.render(<Blog posts={blogPosts}/>, document.getElementById('blog-place'));

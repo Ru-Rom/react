@@ -21,7 +21,7 @@ export default class DisplayModal extends React.Component {
         this.vzuhTxtRef = React.createRef();
     }
 
-    addVzuh() { // Просто что бы ссылки попрактиковать, как передать данные отсюда скажем в Blog пока не понятно
+    addVzuh() { // Просто что бы попрактиковать ссылки, как передать данные отсюда скажем в Blog пока не понятно
         console.log('Вжух сохранен!');
         console.log(this.vzuhTitleRef.current.value);
         console.log(this.vzuhTxtRef.current.value);
@@ -36,10 +36,6 @@ export default class DisplayModal extends React.Component {
         console.log(posts);
         this.setState({DisplayModal});
     }
-
-    // static getDerivedStateFromProps(props, state) {
-    //     console.log('getDerivedStateFromProps');
-    // }
 
     render() {
         let modalView;
@@ -79,8 +75,6 @@ export default class DisplayModal extends React.Component {
                         </div>
                     </div>
                 </div>
-
-
             </div>;
         }
 
@@ -102,5 +96,4 @@ export default class DisplayModal extends React.Component {
         this.setState({display: false}); // по идейному воплощению окошко должно быть скрыто ^^
         console.log('componentDidMount');
     }
-
 }
