@@ -1,17 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router';
 
-export default class PostItem extends React.Component{
+import PostItem from './PostItem';
+
+export default class Post extends React.Component{
    
     render() {
-        return ( // key={index}
-            <ul>
-                <div className="card border-secondary mb-3">
-                    <div className="card-header">{this.props.title}</div>
-                    <div className="card-body text-secondary">
-                        <p>{this.props.body}</p>
-                    </div>   
-                </div>
-            </ul>
+        return (
+            <div className="card border-secondary mb-3">
+                <div className="card-header"><Link to={`/posts/${this.props.id}`}>{this.props.title}</Link></div>
+                <div className="card-body text-secondary">
+                    <p>{this.props.body}</p>
+                </div>   
+            </div>
         );
     }
 }

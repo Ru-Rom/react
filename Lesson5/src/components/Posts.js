@@ -5,7 +5,15 @@ import PostsList from './PostsList';
 export default class Posts extends React.Component {
     render() {
         return (
-            <PostsList />
+            <div>
+                {
+                    (!this.props.children) ?
+                        (<PostsList />)
+                        :
+                        (this.props.children)
+                }
+            </div>
+            
         );
     }
 }

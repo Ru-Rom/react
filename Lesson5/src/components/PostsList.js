@@ -13,7 +13,7 @@ export default class PostsList extends React.Component {
 
         axios.get('https://jsonplaceholder.typicode.com/posts/')
             .then(response => {
-                this.setState({posts: response.data})
+                this.setState({posts: response.data}); // Обновляем состояние компонента
             });
     }
 

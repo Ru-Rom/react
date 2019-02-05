@@ -8,6 +8,7 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router'; // v3 //
 import Layout from './layouts/Layout';
 import Main from './components/Main';
 import Posts from './components/Posts';
+import Post from './components/Post';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import PageNotFound from './components/PageNotFound';
@@ -25,7 +26,9 @@ ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={Layout}>
             <IndexRoute component={Main}/>
-            <Route path="/posts" component={Posts} />
+            <Route path="/posts" component={Posts}>
+                <Route path=":postId" component={Post} />
+            </Route>
             <Route path="/about" component={About} />
             <Route path="/contacts" component={Contacts} />
             <Route path="*" component={PageNotFound} />
