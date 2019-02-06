@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-import PostItem from './PostItem';
+//import PostItem from './PostItem';
 
-export default class Post extends React.Component{
+export default class PostItem extends React.Component{
    
     render() {
         return (

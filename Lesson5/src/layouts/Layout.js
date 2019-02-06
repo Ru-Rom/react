@@ -21,6 +21,7 @@ export default class Layout extends React.Component {
                     {/* Для <MenuItem передаем параметры href и active статус, а в children Главная */}
                     <MenuItem href="/" active={this.isActive('/')}>Главная</MenuItem> 
                     <MenuItem href="/posts" active={this.isActive('/posts')}>Список постов</MenuItem>
+                    <MenuItem href="/comments" active={this.isActive('/comments')}>Список комментариев</MenuItem>
                     <MenuItem href="/about" active={this.isActive('/about')}>О нас</MenuItem>
                 </Menu>
                 <div className="container">
