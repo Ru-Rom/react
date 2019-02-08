@@ -29,40 +29,50 @@ import Weather from './Weather';
 
 const newWeather = new Weather();
 //let result = newWeather.getCurrentWeather();
-//console.log(result);
-//newWeather.getCurrentWeather().then(response => console.log(response)); // Почему не получается вызвать? Потому что не промис возвращается?
-
-// [КОСТЫЛЬ START] Попытка решить костылем
-var result = {}; // А тут снова данные не обновятся т.к. асинхронщина и я чего то пока не знаю
-newWeather.getCurrentWeatherSync().then(response => {
-    return response.json();
-    //console.log(result);
-}).then(function (json) {
-    let temp, humidity, pressure, description;
-
-    temp = json.main.temp; // celsius
-    humidity = json.main.humidity; // %
-    pressure = Number((json.main.pressure / 1.33322387415).toFixed(2)); // hPa
-    if (json.weather[0]) {
-        description = json.weather[0].description;
-    } else {
-        description = '';
-    }
-
-    result.temp = temp;
-    result.humidity = humidity;
-    result.pressure = pressure;
-    result.description = description;
-    console.log(result);
-    return result;
-
-}).catch(function (ex) { 
-    console.log('Ошибка получения данных', ex);
-});
-// [КОСТЫЛЬ END]
 
 // Создаем компонент Login
 export default class Login extends React.Component {
+    constructor () {
+        super();
+        this.weatherData = {
+            description: 'description нет данных',
+            temperature: 'temperature нет данных',
+            humidity: 'humidity нет данных',
+            pressure: 'pressure нет данных'
+        };
+
+        this.state = {
+            description: 'нет данных',
+            temperature: 'нет данных',
+            humidity: 'нет данных',
+            pressure: 'нет данных'
+        };
+        
+        //console.log(this.weatherData);
+        //console.log(this.state.description);
+       
+    }
+
+    componentDidMount () {
+        newWeather.getCurrentWeather().then(response => {
+            console.log('2. в getWeather: ' + response.description);
+            this.setState({ // Вызывается повторный render()
+                description: response.description,
+                temperature: response.temp,
+                humidity: response.humidity,
+                pressure: response.pressure
+            });
+        });
+        
+    }
+    // async getWeather() {       
+    //     await newWeather.getComment().then(response => {
+    //         console.log('2. в getWeather: ' + response.email);
+    //         this.result = response.email;
+    //     });
+    // }
+    
+
     render() {
         return (
             <form>
@@ -76,8 +86,12 @@ export default class Login extends React.Component {
                     <input type="password" className="form-control" id="InputPassword" placeholder="Введите ваш пароль" />
                 </div>
                 <button type="submit" className="btn btn-primary">Отправить</button>
-                {/* ниже просто костыль с попыткой вывести данные */}
-                <div><br></br>Погода: {result.temp}</div>
+                <div>
+                    <br/>Погода: {this.state.description}, 
+                    <br/>Температура: {this.state.temperature},
+                    <br/>Влажность: {this.state.humidity},
+                    <br/>Давление: {this.state.pressure}
+                </div>
             </form>
         );
     }
