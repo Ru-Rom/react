@@ -15,7 +15,7 @@ class App extends React.Component {
             {href: '/', title: 'Меню 1'},
             {href: '/', title: 'Меню 2'},
             {href: '/', title: 'Меню 3'}
-        ]
+        ];
 
         return (
             <div><Menu menuTitle='Меню' items = {menuItems}/> </div>
