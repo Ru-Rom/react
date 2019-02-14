@@ -1,15 +1,9 @@
 import React from 'react';
 
-import Menu from '../components/Menu';
-import MenuItem from '../components/MenuItem';
+import Menu from './Menu';
+import MenuItem from './MenuItem';
 
 export default class Layout extends React.Component {
-    constructor(props) {
-        super(props);
-        this.brand = 'Бложенька';
-    }
-
-
     isActive(href) {
         return window.location.pathname === href; // Возвращаем результат сравнения текущего адреса
     }
@@ -34,5 +28,7 @@ export default class Layout extends React.Component {
                 <footer className="card-footer">&copy; 2019</footer>
             </div>
         );
+
     }
+
 }

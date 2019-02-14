@@ -1,35 +1,41 @@
 import React from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {fetchComments} from '../actions/commentsActions';
 
 import CommentItem from './CommentItem';
 
-export default class CommentsList extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            comments: [] // Копируем свойство posts из props
-        };
-
-        axios.get('https://jsonplaceholder.typicode.com/comments/')
-            .then(response => {
-                this.setState({comments: response.data}); // Обновляем состояние компонента
-            });
-    }
+class CommentsList extends React.Component {
+    fetchComments() {
+        this.props.dispatch(fetchComments()); // Функция получения данных, выдающая массив объектов(коментариев)
+    } 
 
     render() {
-        if (!this.state.comments.length) {
+        const {user, comments} = this.props;
+        console.log('list render', comments);
+        if (!comments.length) {
             return null;
         }
 
-        const comments = this.state.comments.map((comment, index) => {
-            return <CommentItem key={index} {...comment}/>; // все свойства post передаем в компонент PostItem
+        const mappedComments = comments.map((comment, index) => {
+            return <CommentItem key={index} {...comment}/>;
         });
         return(
             <>  
                 <h4>Список комментариев</h4>
-                {comments}
+                {mappedComments}
             </>
         );
     }
+
+    componentDidMount() {
+        this.props.dispatch(fetchComments());
+    }
 }
+
+function mapStateToProps (state) { // функция которая объясняет как мы хотим получать переменные из стейта
+    return {
+        comments: state.comments.comments // (в reducers в index.js import commentsReducer как comment)
+    };
+}
+
+export default connect(mapStateToProps)(CommentsList);

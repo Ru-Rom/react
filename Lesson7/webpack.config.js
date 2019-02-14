@@ -1,4 +1,5 @@
 const path = require('path');
+//var debug = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: path.resolve(__dirname, 'src', 'app.jsx'),//'./src/app.jsx',
@@ -7,6 +8,7 @@ module.exports = {
         filename: 'main.js'
     }, 
     mode: 'development',
+    //devtool: debug ? 'inline-sourcemap' : null,
     watch: true,
     module: {
         rules: [
@@ -24,6 +26,7 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, 'dist')
+        contentBase: path.resolve(__dirname, 'dist'),
+        port: 3001
     }
 };
