@@ -5,9 +5,9 @@ import {fetchComments} from '../actions/commentsActions';
 import CommentItem from './CommentItem';
 
 class CommentsList extends React.Component {
-    fetchComments() {
-        this.props.dispatch(fetchComments()); // Функция получения данных, выдающая массив объектов(коментариев)
-    } 
+    // fetchComments() {
+    //     this.props.dispatch(fetchComments()); // Функция получения данных, выдающая массив объектов(коментариев)
+    // } 
 
     render() {
         const {user, comments} = this.props;

@@ -1,10 +1,14 @@
 import axios from 'axios';
 
-export function fetchComments() {
+export function fetchComments(commentId) {
     return function(dispatch) {
+        let url = 'https://jsonplaceholder.typicode.com/comments/';
+
+        (commentId) ? (url = url + commentId) : url;
+
         dispatch({type: 'FETCH_COMMENTS'}); // Диспетчер передает экшены и данные редьюсерс
     
-        axios.get('https://jsonplaceholder.typicode.com/comments/')
+        axios.get(url)
             .then((response) => {
                 dispatch({type: 'FETCH_COMMENTS_FULFILLED', payload: response.data
                 });

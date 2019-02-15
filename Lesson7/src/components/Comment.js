@@ -1,28 +1,33 @@
 import React from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+
+import {fetchComments} from '../actions/commentsActions';
 
 import CommentItem from './CommentItem';
 
-export default class Post extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            comment: null
-        };
-
-        axios.get(`https://jsonplaceholder.typicode.com/comments/${this.props.params.commentId}`)
-            .then(response => {
-                this.setState({comment: response.data}); // Обновляем состояние компонента
-            });
-    }
+class Comment extends React.Component {
 
     render() {
+        const {comments} = this.props;
+        console.log(comments);
         return (
             <div>
-                {this.state.comment && <CommentItem {...this.state.comment}/>}
+                {<CommentItem {...comments}/>} 
+                {/* а для чего тут было comments && <CommentItem {...comments}/> ?? */}
             </div>
         );
 
     }
+
+    componentDidMount() {
+        this.props.dispatch(fetchComments(this.props.params.commentId));
+    }
 }
+
+function mapStateToProps (state) { // функция которая объясняет как мы хотим получать переменные из стейта
+    return {
+        comments: state.comments.comments // (в reducers в index.js import commentsReducer как comment)
+    };
+}
+
+export default connect(mapStateToProps)(Comment);
